@@ -1,0 +1,40 @@
+@mixin flexible() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  @include flexible();
+  flex-direction: column;
+  background-color: rgb(248, 206, 143);
+  font-family: 'Montserrat';
+  color: black;
+  font-size: 1.2rem;
+  block-size: 100vh;
+}
+
+.page {
+    display: none;
+}
+
+.active-page {
+    @include flexible();
+    flex-direction: column;
+    gap: 25px;
+    margin: auto;
+}
+
+.button {
+    background-color: transparent;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+}
