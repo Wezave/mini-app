@@ -11,25 +11,34 @@
   <body>
     <section id="page1" class="page active-page">
       <h1>Страница приветствия</h1>
-      <p>Первая страница с текстом приветствия и ссылкой на вторую страницу.</p>
+      <p>
+        Первая страница с текстом приветствия и
+        <a href="#" id="second-page-link">ссылкой</a>
+        на вторую страницу
+      </p>
       <button class="button" id="go-to-second-page">
         Перейти на вторую страницу
       </button>
     </section>
     <section id="page2" class="page">
       <p id="selected-info">Выбрано: 0, сумма: 0</p>
-      <label for="menu-select">Выберите меню:</label>
-      <select id="menu-select">
-        <option value="1">Завтрак</option>
-        <option value="2">Обед</option>
-        <option value="3">Ужин</option>
-      </select>
+      <template id="menu-item-template">
+        <div class="menu-item">
+          <input type="checkbox" id="" data-id="" />
+          <label for="">Пункт</label>
+          <span class="value">(0)</span>
+        </div>
+      </template>
+      <div class="menu-selector">
+        <button class="menu-button" data-menu-id="1">Завтрак</button>
+        <button class="menu-button" data-menu-id="2">Обед</button>
+        <button class="menu-button" data-menu-id="3">Ужин</button>
+      </div>
       <div id="menu-container"></div>
       <button class="button" id="go-to-first-page">
         Вернуться на первую страницу
       </button>
     </section>
-
-    <script type="module" src="dist/script.js"></script>
+    <script type="module" src="dist/main.js"></script>
   </body>
 </html>
