@@ -25,30 +25,6 @@ function updateActiveMenuButton(menuId) {
         }
     });
 }
-function renderMenu() {
-    menuContainer.innerHTML = "";
-    const currentMenu = getCurrentMenu();
-    currentMenu.items.forEach((item) => {
-        const clone = itemTemplate.content.cloneNode(true);
-        const checkbox = clone.querySelector('input[type="checkbox"]');
-        const label = clone.querySelector("label");
-        const valueSpan = clone.querySelector(".value");
-        const inputId = `item-${item.id}`;
-        checkbox.id = inputId;
-        checkbox.dataset.id = String(item.id);
-        checkbox.checked = item.checked;
-        label.htmlFor = inputId;
-        label.textContent = item.label;
-        valueSpan.textContent = `(${item.value})`;
-        checkbox.addEventListener("change", (event) => {
-            const target = event.target;
-            const itemId = Number(target.dataset.id);
-            toggleItem(itemId, target.checked);
-            updateInfo();
-        });
-        menuContainer.appendChild(clone);
-    });
-}
 function updateInfo() {
     selectedMenu.textContent = `Меню: ${getCurrentMenu().name}.`;
     selectedInfo.textContent = `Выбрано: ${selectedItemsCount()}, сумма: ${selectedSum()}.`;
@@ -90,4 +66,28 @@ menuButtons.forEach((button) => {
         }
     });
 });
+function renderMenu() {
+    menuContainer.innerHTML = "";
+    const currentMenu = getCurrentMenu();
+    currentMenu.items.forEach((item) => {
+        const clone = itemTemplate.content.cloneNode(true);
+        const checkbox = clone.querySelector('input[type="checkbox"]');
+        const label = clone.querySelector("label");
+        const valueSpan = clone.querySelector(".value");
+        const inputId = `item-${item.id}`;
+        checkbox.id = inputId;
+        checkbox.dataset.id = String(item.id);
+        checkbox.checked = item.checked;
+        label.htmlFor = inputId;
+        label.textContent = item.label;
+        valueSpan.textContent = `(${item.value})`;
+        checkbox.addEventListener("change", (event) => {
+            const target = event.target;
+            const itemId = Number(target.dataset.id);
+            toggleItem(itemId, target.checked);
+            updateInfo();
+        });
+        menuContainer.appendChild(clone);
+    });
+}
 //# sourceMappingURL=main.js.map
