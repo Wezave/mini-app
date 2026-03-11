@@ -9,19 +9,20 @@
     <link rel="stylesheet" href="./styles/styles.css" />
   </head>
   <body>
-    <section id="page1" class="page active-page">
+    <section id="page1" class="page">
       <h1>Страница приветствия</h1>
       <p>
         Первая страница с текстом приветствия и
         <a href="#" id="second-page-link">ссылкой</a>
-        на вторую страницу
+        на вторую страницу.
       </p>
       <button class="button" id="go-to-second-page">
         Перейти на вторую страницу
       </button>
     </section>
-    <section id="page2" class="page">
-      <p id="selected-info">Выбрано: 0, сумма: 0</p>
+    <section id="page2" class="page hidden-page">
+      <p id="selected-menu"></p>
+      <p id="selected-info"></p>
       <template id="menu-item-template">
         <div class="menu-item">
           <input type="checkbox" id="" data-id="" />

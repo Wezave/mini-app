@@ -1,40 +1,122 @@
 @mixin flexible() {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+$main-color: rgb(248, 206, 143);
+$accent-color: rgb(184, 184, 184);
+$hover-color: rgb(255, 185, 80);
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   @include flexible();
   flex-direction: column;
-  background-color: rgb(248, 206, 143);
-  font-family: 'Montserrat';
+  background-color: $main-color;
+  font-family: "Montserrat";
   color: black;
   font-size: 1.2rem;
   block-size: 100vh;
+  inline-size: 100vw;
 }
 
-.page {
-    display: none;
+.hidden-page {
+  display: none !important;
 }
 
-.active-page {
-    @include flexible();
-    flex-direction: column;
-    gap: 25px;
-    margin: auto;
+#page1 {
+  @include flexible();
+  flex-direction: column;
+  gap: 25px;
+  margin: auto;
+
+  a:visited {
+    color: $accent-color;
+  }
+
+  a:hover {
+    color: $hover-color;
+  }
 }
 
-.button {
-    background-color: transparent;
-    padding: 15px;
-    border-radius: 15px;
-    font-size: 1rem;
-    cursor: pointer;
+#page2 {
+  display: grid;
+  gap: 30px;
+  border: 2px solid $accent-color;
+  border-radius: 15px;
+  padding: 15px;
+  min-inline-size: 1024px;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 5fr 1fr;
+  align-items: center;
+  justify-items: center;
+  grid-template-areas:
+    "selected-menu selected-info"
+    "menu-selector menu-container"
+    "button button";
+
+  #go-to-first-page {
+    grid-area: button;
+  }
+}
+
+button {
+  background-color: transparent;
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 1rem;
+  inline-size: 400px;
+  cursor: pointer;
+
+  &.active {
+    background-color: $accent-color;
+  }
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+#selected-menu {
+  grid-area: selected-menu;
+}
+
+#selected-info {
+  grid-area: selected-info;
+}
+
+.menu-selector {
+  @include flexible();
+  flex-direction: column;
+  gap: 1vw;
+  grid-area: menu-selector;
+
+  button {
+    inline-size: 125px;
+  }
+}
+
+#menu-container {
+  grid-area: menu-container;
+  display: flex;
+  flex-direction: column;
+  justify-self: start;
+  gap: 15px;
+
+  input[type="checkbox"] {
+    vertical-align: middle;
+    accent-color: $accent-color;
+    width: 15px;
+    height: 15px;
+  }
+
+  label,
+  .value {
+    vertical-align: middle;
+  }
 }

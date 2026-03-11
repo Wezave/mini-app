@@ -20,17 +20,18 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   background-color: #f8ce8f;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   color: black;
   font-size: 1.2rem;
   block-size: 100vh;
+  inline-size: 100vw;
 }
 
-.page {
-  display: none;
+.hidden-page {
+  display: none !important;
 }
 
-.active-page {
+#page1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -48,11 +49,117 @@ body {
   margin: auto;
 }
 
-.button {
+#page1 a:visited {
+  color: #b8b8b8;
+}
+
+#page1 a:hover {
+  color: #ffb950;
+}
+
+#page2 {
+  display: -ms-grid;
+  display: grid;
+  gap: 30px;
+  border: 2px solid #b8b8b8;
+  border-radius: 15px;
+  padding: 15px;
+  min-inline-size: 1024px;
+  -ms-grid-columns: 1fr 4fr;
+      grid-template-columns: 1fr 4fr;
+  -ms-grid-rows: 1fr 5fr 1fr;
+      grid-template-rows: 1fr 5fr 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+      grid-template-areas: "selected-menu selected-info" "menu-selector menu-container" "button button";
+}
+
+#page2 #go-to-first-page {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: button;
+}
+
+button {
   background-color: transparent;
   padding: 15px;
   border-radius: 15px;
   font-size: 1rem;
+  inline-size: 400px;
   cursor: pointer;
+}
+
+button.active {
+  background-color: #b8b8b8;
+}
+
+button:hover {
+  background-color: #ffb950;
+}
+
+#selected-menu {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: selected-menu;
+}
+
+#selected-info {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: selected-info;
+}
+
+.menu-selector {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1vw;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: menu-selector;
+}
+
+.menu-selector button {
+  inline-size: 125px;
+}
+
+#menu-container {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: menu-container;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-self: start;
+  gap: 15px;
+}
+
+#menu-container input[type="checkbox"] {
+  vertical-align: middle;
+  accent-color: #b8b8b8;
+  width: 15px;
+  height: 15px;
+}
+
+#menu-container label,
+#menu-container .value {
+  vertical-align: middle;
 }
 /*# sourceMappingURL=styles.css.map */
